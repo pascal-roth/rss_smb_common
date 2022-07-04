@@ -4,7 +4,7 @@
     <arg name="use_sim_time" default="false" />
     <arg name="launch_lidar_to_imu_publisher"  default="true" />
     <arg name="launch_rviz" default="true" />
-    <arg name="imu_topic" default="imu_topic" />
+    <arg name="imu_topic" default="/versavis/imu" />
     <arg name="pose_topic" default="pose_topic" />
 
     <!-- Sim -->
