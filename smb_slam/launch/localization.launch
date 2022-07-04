@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
 
-  <arg name="launch_rviz" 		    default="false"/>
+  <arg name="launch_rviz" 		    default="true"/>
   <arg name="launch_sensors"      default="false"/>
-  <arg name="use_lidar_odometry"  default="false"/>
-  <arg name="map_name"            default="Wangen_mapdecimated.pcd" /> 
-  <arg name="pcd_filepath"        default="$(find smb_slam)/maps/$(arg map_name)" />
-  <arg name="launch_lidar_odometry"   default="false"/>
-
+  <arg name="use_lidar_odometry"  default="true"/>
+  <arg name="map_name"            default="map.pcd" /> 
+  <arg name="pcd_filepath"        default="/home/fdila/maps/$(arg map_name)" />
+  <arg name="launch_lidar_odometry"   default="true"/>
+  
   <include file="$(find smb)/launch/sensors.launch" if="$(arg launch_sensors)">
    </include> 
 
