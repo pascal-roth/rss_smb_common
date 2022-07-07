@@ -12,12 +12,12 @@ import glob
 
 # params
 DIST_THRES = {
-    'backpack': 3,
-    'umbrella': 7,
+    'backpack': 1,
+    'umbrella': 1,
     'bottle': 1,
-    'stop sign': 5,
-    'chair': 10,
-    'clock': 5
+    'stop sign': 1,
+    'chair': 1,
+    'clock': 1
 }
 # DIST_THRES = {
 #     'bicycle': 1,
