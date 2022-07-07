@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<launch>
+    <!-- Object Detection Stuff-->
+    <include file= "$(find object_detection)/launch/object_detection.launch">
+    </include>
+
+    <node name="detection_filter" pkg="object_detection" type="detection_filter.py"/>
+</launch>
+
+
+
+

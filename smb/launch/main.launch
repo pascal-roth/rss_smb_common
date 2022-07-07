@@ -24,10 +24,10 @@
     <!-- Run the mission planner node-->
     <include file="$(find smb_mission_planner)/launch/mission_planner.launch"/>
 
-    <!-- Object Detection Stuff-->
-    <include file= "$(find object_detection)/launch/object_detection.launch">
-       <arg name="gpu" value="off"/>
-    </include>
+<!--      --><!-- Object Detection Stuff--> -->
+<!--     <include file= "$(find object_detection)/launch/object_detection.launch"> -->
+<!--        <arg name="gpu" value="off"/> -->
+<!--     </include> -->
 </launch>
 
 <!--     <node name="detection_filter" pkg="object_detection" type="detection_filter.py"/> -->
