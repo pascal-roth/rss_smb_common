@@ -49,7 +49,7 @@ for filename in filenames:
             else:
                 renew_flag = 0
                 for j in range(len(result[obj_name])):
-                    if np.linalg.norm(loc - result[obj_name][j][0]) < (DIST_THRES[obj_name]**2):
+                    if np.linalg.norm(loc - result[obj_name][j][0]) < (DIST_THRES[obj_name]):
                         renew_flag = 1
                         if row['Confidence'] > result[obj_name][j][1]:
                             result[obj_name][j][0] = loc
