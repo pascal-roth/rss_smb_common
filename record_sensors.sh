@@ -28,4 +28,3 @@ rosbag record --output-name=${outpath}/${now}"_smb" \
 /tf \
 /tf_static
 
-

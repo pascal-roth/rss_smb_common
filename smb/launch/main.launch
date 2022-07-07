@@ -5,13 +5,20 @@
     <arg name="pcd_filepath"          default = "/home/sophiehebe/pointcloud_data/map.pcd"/>
     <arg name="global_frame"          default = "map"/>
     <arg name ="launch_gazebo_gui"    default="true"/>
-
+    <arg name ="odom_topic"   	      default="msf_core/odometry"/>
+    <arg name ="imu_topic" default="/versavis/imu"/>
+    <arg name ="pose_topic" default="/icp_node/range_sensor_transform" />
     <!-- Run the main smb node on the robot-->
     <!--<include file = "$(find smb_gazebo)/launch/sim_object.launch">
         <arg name "launch_gazebo_gui" value="$(arg launch_gazebo_gui)"/>
     </include>-->
 
     <include file = "$(find smb)/launch/smb.launch"/>
+
+    <include file ="$(find smb_msf)/launch/smb_msf.launch">
+	<arg name ="imu_topic" default="$(arg odom_topic)"/>
+	<arg name ="pose_topic" default="$(arg pose_topic)" />
+    </include>
 
     <!-- Run the localization node on the robot node-->
     <include file= "$(find smb_slam)/launch/localization.launch">
@@ -20,9 +27,12 @@
     <!-- Run the 2D Path Planner node-->
     <include file= "$(find smb_navigation)/launch/navigate2d_ompl.launch">
         <arg name="global_frame" value="$(arg global_frame)"/>
+	<arg name="odom_topic" value="$(arg odom_topic)"/>
     </include>
     <!-- Run the mission planner node-->
     <include file="$(find smb_mission_planner)/launch/mission_planner.launch"/>
+
+   
 
 <!--      --><!-- Object Detection Stuff--> -->
 <!--     <include file= "$(find object_detection)/launch/object_detection.launch"> -->
