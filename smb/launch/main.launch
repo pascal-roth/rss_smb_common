@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <arg name="pcd_filepath"          default = "/home/sophiehebe/pointcloud_data/map.pcd"/>
+    <arg name="global_frame"          default = "map"/>
+    <arg name ="launch_gazebo_gui"    default="true"/>
+
+    <!-- Run the main smb node on the robot-->
+    <!--<include file = "$(find smb_gazebo)/launch/sim_object.launch">
+        <arg name "launch_gazebo_gui" value="$(arg launch_gazebo_gui)"/>
+    </include>-->
+
+    <include file = "$(find smb)/launch/smb.launch"/>
+
+    <!-- Run the localization node on the robot node-->
+    <include file= "$(find smb_slam)/launch/localization.launch">
+        <arg name="pcd_filepath" value="$(arg pcd_filepath)"/>
+    </include>
+    <!-- Run the 2D Path Planner node-->
+    <include file= "$(find smb_navigation)/launch/navigate2d_ompl.launch">
+        <arg name="global_frame" value="$(arg global_frame)"/>
+    </include>
+    <!-- Run the mission planner node-->
+    <include file="$(find smb_mission_planner)/launch/mission_planner.launch"/>
+
+    <!-- Object Detection Stuff-->
+    <include file= "$(find object_detection)/launch/object_detection.launch">
+       <arg name="gpu" value="off"/>
+    </include>
+</launch>
+
+<!--     <node name="detection_filter" pkg="object_detection" type="detection_filter.py"/> -->
+
+
+
