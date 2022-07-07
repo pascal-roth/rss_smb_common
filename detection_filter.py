@@ -11,7 +11,7 @@ import datetime
 import os
 
 CONFIDENCE_THR = 0.7 #TODO: determine threshold
-DURATION = 100 #TODO: determine duration
+DURATION = 10 #TODO: determine duration
 
 class object_filter:
     def __init__(self):
