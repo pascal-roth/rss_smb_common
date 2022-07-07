@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import glob
+import os
 
 # objects
 # 25 backpack
@@ -27,7 +28,7 @@ DIST_THRES = {
 
 
 
-dirname = '/home/zty/Desktop/detection_data/'
+dirname = "/home/team6/detection_data"
 objects_name = ['backpack', 'umbrella', 'bottle', 'stop sign', 'chair', 'clock'] # note the stop sign
 # objects_name = ['bicycle', 'stop sign', 'person']
 fields = ['DetectionID', 'Confidence', 'Position x', 'Position y', 'Position z', 'Label']
@@ -45,7 +46,7 @@ for filename in filenames:
             loc = np.array([row['Position x'], row['Position y'], row['Position z']])
             if len(result[obj_name]) == 0:
                 result[obj_name].append([loc, row['Confidence'], row['DetectionID']])
-                # print(f'generate new object of {obj_name}, num: {len(result[obj_name])}')
+                print(f'generate new object of {obj_name}, num: {len(result[obj_name])}')
             else:
                 renew_flag = 0
                 for j in range(len(result[obj_name])):
@@ -68,10 +69,11 @@ for key in objects_name:
 
 # write to csv file
 output  = []
-save_dir = '/home/zty'
-save_filename = 'output.csv'
+save_dir = '/home/team6'
+save_filename = 'output_filtered_objects.csv'
 for key in objects_name:
-    output.append([key, row['DetectionID'], loc[0], loc[1], loc[2]])
-df = pd.DataFrame(self.df, columns=['Label', 'DetectionID', 'locx', 'locy', 'locz'])
+    for i in range(len(result[key])):
+        output.append([key, result[key][i][0], result[key][i][1], result[key][i][2]])
+df = pd.DataFrame(output, columns=['Label', 'Location', 'Confidence', 'DetectionID'])
 df.to_csv(os.path.join(save_dir, save_filename), index=False)
     
